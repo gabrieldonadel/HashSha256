@@ -24,7 +24,6 @@
                byte[] t = sha256.getSha256("teste");
                String s = sha256.bytesToBase64(t);
             %>
-            <p>Este número é <%= s %>.</p>
         </div>
     </body>
 </html>
