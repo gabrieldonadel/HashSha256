@@ -23,3 +23,7 @@ and open the template in the editor.
     max-width: 100%;
     height: -webkit-fill-available;
 }
+.result button{
+    margin-top: 17px;
+    margin-bottom: 10px;
+}

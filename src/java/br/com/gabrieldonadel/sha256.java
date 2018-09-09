@@ -34,10 +34,13 @@ public class sha256 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         
+        request.setCharacterEncoding("UTF-8");
         String dados = request.getParameter("dados");
+        if(dados == null) dados = "abc";
+        
         response.setContentType("text/html;charset=UTF-8");
         byte[] sha256 = getSha256(dados);
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = response.getWriter(); 
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html><head>");
@@ -48,11 +51,11 @@ public class sha256 extends HttpServlet {
             out.println("<body><div class=\"container\"><div class=\"result\">");
             out.println("<h1>" + dados + "</h1>");
             out.println("<p>hex: " + bytesToHex(sha256) + "</p>");
-            out.println("<p>h:e:x: " + hexColons(bytesToHex(sha256)) + "</p>");
             out.println("<p>HEX: " + bytesToHex(sha256).toUpperCase() + "</p>");
+            out.println("<p>h:e:x: " + hexColons(bytesToHex(sha256)) + "</p>");
             out.println("<p>base64: " + bytesToBase64(sha256) + "</p>");
             out.println("</div></div></body></html>");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
